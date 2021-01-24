@@ -12,18 +12,16 @@ var dir = {
     php: 'app',
     input: {
         js:   'js',
-        sass: 'sass',
+        less: 'less',
     },
     output: {
-        js:   'public_html/assets/js',
-        sass: 'public_html/assets/css',
+        js:   'public_html/assets',
+        less: 'public_html/assets',
     },
 };
 
 /**
  * Packages.
- *
- * npm i --save-dev gulp gulp-autoprefixer gulp-clean-css gulp-filter gulp-if gulp-livereload gulp-notify gulp-plumber gulp-rename gulp-sourcemaps minimist gulp-concat gulp-uglify gulp-babel @babel/core @babel/preset-env gulp-sass gulp-sass-glob
  */
 var gulp         = require( 'gulp' );
 var autoprefixer = require( 'gulp-autoprefixer' );
@@ -40,9 +38,8 @@ var argv         = require( 'minimist' )( process.argv.slice( 2 ) );
 var concat       = require( 'gulp-concat' );
 var uglify       = require( 'gulp-uglify' );
 var babel        = require( 'gulp-babel' );
-// sass
-var sass         = require( 'gulp-sass' );
-var sassglob     = require( 'gulp-sass-glob' );
+// less
+var less         = require( 'gulp-less' );
 
 /**
  * Environment.
@@ -115,17 +112,15 @@ app.processJS = function ( args ) {
         .pipe( livereload() );
 };
 
-app.processSass = function ( args ) {
+app.processLess = function ( args ) {
     // use all the files
     return gulp.src( args.inputFiles )
         // catch errors
         .pipe( plumber( { errorHandler: onError } ) )
         // start the sourcemap
         .pipe( gulpif( config.run_sourcemaps, sourcemaps.init() ) )
-        // analyse the globs
-        .pipe( sassglob() )
-        // compile the sass to css
-        .pipe( sass( { includePaths: ['node_modules'] } ) )
+        // compile the less to css
+        .pipe( less() )
         // autoprefix the css
         .pipe( autoprefixer( 'last 10 versions' ) )
         // minify the css
@@ -162,13 +157,13 @@ gulp.task( 'js_app', function ( done ) {
 });
 
 /**
- * Tasks: Sass.
+ * Tasks: Less.
  */
-gulp.task( 'sass_app', function ( done ) {
-    app.processSass({
-        'name'       : 'app sass',
-        'inputFiles' : [ dir.input.sass+'/app.scss' ],
-        'outputDir'  : dir.output.sass,
+gulp.task( 'less_app', function ( done ) {
+    app.processLess({
+        'name'       : 'app less',
+        'inputFiles' : [ dir.input.less+'/app.less' ],
+        'outputDir'  : dir.output.less,
         'outputFile' : 'app.min.css',
     });
     done();
@@ -190,7 +185,8 @@ gulp.task( 'watch', function () {
     livereload.listen();
     // JavaScript
     gulp.watch( dir.input.js+'/app.js', gulp.parallel( 'js_app' ) );
-    gulp.watch( dir.input.sass+'/**/*.scss', gulp.parallel( 'sass_app' ) );
+    // Less
+    gulp.watch( dir.input.less+'/**/*.less', gulp.parallel( 'less_app' ) );
     // PHP
     gulp.watch( dir.php+'/**/*.php', gulp.parallel( 'livereload' ) );
     // notify
@@ -206,6 +202,6 @@ gulp.task( 'watch', function () {
  */
 gulp.task( 'default', gulp.parallel(
     'js_app',
-    'sass_app',
+    'less_app',
 ));
 

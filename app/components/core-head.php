@@ -12,7 +12,7 @@
     <title>Overwatch Counters</title>
 
     <!-- link css -->
-    <link rel="stylesheet" href="/assets/css/app.min.css">
+    <link rel="stylesheet" href="/assets/app.min.css">
 
 </head>
 <body>

@@ -1,5 +1,6 @@
 *.map
 *.sublime-*
 /misc/
+/node_modules/
 /public_html/assets/css/*.css
 /public_html/assets/js/*.js

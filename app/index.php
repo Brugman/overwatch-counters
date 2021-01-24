@@ -1,8 +1,6 @@
 <?php
 
-$functions = glob('../app/functions/*.php');
-foreach ( $functions as $function )
-    include $function;
+include 'functions/functions.php';
 
 include 'components/core-head.php';
 
@@ -36,7 +34,7 @@ foreach ( $heroes_damage as $hero_index => $hero_name )
     $neutrals = heroes_neutral_against( $hero_index );
 ?>
 
-    <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=$counters_piped;?>">
+    <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=$counters_piped;?>" title="<?=$hero_name;?>">
         <div class="inner" style="background-image: url('/assets/images/hero-<?=slugify_name( $hero_name );?>.png');">
             <?=$hero_name;?>
         </div>

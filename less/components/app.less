@@ -1,8 +1,8 @@
 body {
     height: 100vh;
     padding: 0 30px;
-    background-color: #111;
-    color: #fff;
+    background-color: @color-black-1;
+    color: @color-white-1;
 
     display: flex;
     justify-content: center; // horizontal
@@ -21,11 +21,11 @@ body {
     display: inline-block;
     width: 52px;
     height: 78px;
-    margin: 10px 0;
+    margin: 10px 5px;
     border-radius: 10px;
-    border-top: 3px solid #fff;
-    border-bottom: 3px solid #fff;
-    background-color: #111;
+    border-top: 3px solid @color-white-1;
+    border-bottom: 3px solid @color-white-1;
+    background-color: @color-black-1;
     transform: skew(-15deg);
     overflow: hidden;
     cursor: pointer;
@@ -40,9 +40,6 @@ body {
         opacity: 1;
         background-color: transparentize( #2ecc71, 0.7 );
         border-color: #2ecc71;
-    }
-    & + .hero {
-        margin-left: 10px;
     }
     .inner {
         width: 81px;
