@@ -1,0 +1,9 @@
+{
+  "name": "overwatch-counters",
+  "version": "0.1.0",
+  "devDependencies": {
+  },
+  "dependencies": {
+    "include-media": "^1.4.9"
+  }
+}
