@@ -1,36 +1,36 @@
 (function() {
 
-    console.log( 'version 1' );
-
-    var heroes = document.querySelector('.heroes');
-    var hero_items = document.querySelectorAll('.hero');
+    let heroes = document.querySelector('.heroes');
+    let hero_items = document.querySelectorAll('.hero');
 
     hero_items.forEach(function ( hero ) {
         hero.addEventListener('click', function ( event ) {
+            let this_hero = event.currentTarget;
             // prevent default
             event.stopPropagation();
             event.preventDefault();
-            //
-            var this_hero = event.currentTarget;
-            var neutralize = false;
-            if ( this_hero.classList.contains('active-select') ) {
+            // if we neutralize
+            let neutralize = false;
+            if ( this_hero.classList.contains('active-select') )
+            {
                 neutralize = true;
                 heroes.classList.add('neutral');
             }
             // remove all actives
             hero_items.forEach(function (hero_item) {
                 hero_item.classList.remove('active-select', 'active-counter');
-            })
-            //
-            if ( !neutralize ) {
+            });
+            // if we dont neutralize
+            if ( !neutralize ) 
+            {
                 heroes.classList.remove('neutral');
                 // set this obs active
                 this_hero.classList.add('active-select');
                 // get counters
-                var is_countered_by = this_hero.dataset.isCounteredBy.split('|');
+                let is_countered_by = this_hero.dataset.isCounteredBy.split('|');
+                // set counters active
                 is_countered_by.forEach(function(counter_name){
-                    // set counters active
-                    var counter_hero = document.querySelector( '.hero-'+counter_name );
+                    let counter_hero = document.querySelector( '.hero-'+counter_name );
                     if (counter_hero) {
                         counter_hero.classList.add('active-counter');
                     }
