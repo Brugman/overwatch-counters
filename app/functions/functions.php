@@ -41,13 +41,13 @@ function convert_to_array( $data )
 function get_heroes( $data, $type = false )
 {
     if ( $type == 'damage' )
-        return array_slice( $data[1], 2, 16 );
+        return array_slice( $data[1], 2, 17 );
 
     if ( $type == 'tank' )
-        return array_slice( $data[1], 16, 8 );
+        return array_slice( $data[1], 19, 8 );
 
     if ( $type == 'support' )
-        return array_slice( $data[1], 24, 7 );
+        return array_slice( $data[1], 27, 7 );
 
     return array_slice( $data[1], 2 );
 }
