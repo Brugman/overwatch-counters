@@ -52,22 +52,22 @@ function get_heroes( $data, $type = false )
     return array_slice( $data[1], 2 );
 }
 
-function get_hero_name_by_index( $data, $hero_index )
+function get_hero_name_by_index( $data, $hero_id )
 {
-    return $data[ $hero_index ][1];
+    return $data[ $hero_id ][1];
 }
 
-function heroes_strong_against( $data, $hero_index )
+function heroes_strong_against( $data, $hero_id )
 {
     $counters = [];
 
-    $hero_row = $data[ $hero_index +2 ];
+    $hero_row = $data[ $hero_id +2 ];
 
     foreach ( $hero_row as $counter_index => $wl )
         if ( $wl == 'L' )
             $counters[] = get_hero_name_by_index( $data, $counter_index );
 
-    $hero_col = array_column( $data, $hero_index +2 );
+    $hero_col = array_column( $data, $hero_id +2 );
 
     foreach ( $hero_col as $counter_index => $wl )
         if ( $wl == 'W' )
