@@ -36,7 +36,7 @@ See [Installation](#Installation).
 ### Build tools
 
 Command | Minification | Sourcemaps
---- | --- | ---
+:--- |:--- |:---
 `gulp` | :heavy_minus_sign: | :heavy_check_mark:
 `gulp --env=prod` | :heavy_check_mark: | :heavy_minus_sign:
 
