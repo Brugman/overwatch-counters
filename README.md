@@ -9,7 +9,7 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 
 ### Installation
 
-1. `git pull`
+1. `git clone`
 1. `npm i`
 1. Map `public_html` to a (sub)domain.
 
