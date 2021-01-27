@@ -110,3 +110,16 @@ function pipeify( $array = [] )
     return implode( '|', $array );
 }
 
+function include_svg( $filename = false )
+{
+    if ( !$filename )
+        return false;
+
+    $path = '../public_html/assets/images/'.$filename.'.svg';
+
+    if ( !file_exists( $path ) )
+        return false;
+
+    return file_get_contents( $path );
+}
+
