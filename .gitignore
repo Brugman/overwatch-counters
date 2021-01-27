@@ -1,4 +1,5 @@
 *.map
 *.sublime-*
+/app/config.php
 /misc/
 /node_modules/

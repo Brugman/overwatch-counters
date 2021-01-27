@@ -18,10 +18,9 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 1. Save a copy of [our Google Sheet](https://docs.google.com/spreadsheets/d/1Frw4LPBxlS2CjxHYfuP71tMnRMHabUmD9cAq9nKpXqk/edit?usp=sharing) to your own Drive.
 1. `File`, `Publish to the web`, Select only page `1`, `Start publishing`.
 1. Change the `Web page` select to `CSV`, copy the URL.
-1. ( todo )
-1. ( todo )
-1. ( todo )
-1. Visit your (sub)domain.
+1. Visit your (sub)domain to generate the config file.
+1. Edit `/app/config.php` and add your sheet URL.
+1. Reload your (sub)domain.
 
 ## Contributing
 

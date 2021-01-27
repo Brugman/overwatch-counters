@@ -13,6 +13,17 @@ function dd( $var )
     exit;
 }
 
+function load_config()
+{
+    $config_example = dirname( dirname( __FILE__ ) ).'/config.example.php';
+    $config         = dirname( dirname( __FILE__ ) ).'/config.php';
+
+    if ( !file_exists( $config ) )
+        copy( $config_example, $config );
+
+    require $config;
+}
+
 function display_as_table( $data )
 {
     echo '<table>';
@@ -83,7 +94,7 @@ function slugify_name( $name )
 
 function get_source_data( $gsheet_url = false )
 {
-    if ( !$gsheet_url )
+    if ( !$gsheet_url || empty( $gsheet_url ) )
         $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSecW57HwpBfbcivjEPGWkVD6iP-tDj13JbWDt1oAA6f7JYaGoRRVKswyyjPCXJ2KRITFmcvxflBa-0/pub?gid=0&single=true&output=csv';
 
     $source_csv = @file_get_contents( $gsheet_url );
