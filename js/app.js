@@ -1,6 +1,6 @@
 (function() {
 
-    let hero_list = document.querySelector('.heroes');
+    let hero_lists = document.querySelectorAll('.heroes');
     let hero_items = document.querySelectorAll('.hero');
 
     hero_items.forEach( function ( hero ) {
@@ -15,7 +15,9 @@
             if ( this_hero.classList.contains('active-select') ) {
                 neutralize = true;
                 // add neutral state
-                hero_list.classList.add('neutral');
+                hero_lists.forEach( function ( hero_list ) {
+                    hero_list.classList.add('neutral');
+                });
             }
             // remove all actives
             hero_items.forEach( function ( hero_item ) {
@@ -24,7 +26,9 @@
             // if we dont neutralize
             if ( !neutralize ) {
                 // remove neutral state
-                hero_list.classList.remove('neutral');
+                hero_lists.forEach( function ( hero_list ) {
+                    hero_list.classList.remove('neutral');
+                });
                 // set active hero
                 this_hero.classList.add('active-select');
                 // set active counters
