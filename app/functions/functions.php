@@ -52,15 +52,15 @@ function convert_to_array( $data )
 function get_heroes( $data, $type = false )
 {
     if ( $type == 'damage' )
-        return array_slice( $data[1], 2, 17 );
+        return array_slice( $data[1], 2, 17, true );
 
     if ( $type == 'tank' )
-        return array_slice( $data[1], 19, 8 );
+        return array_slice( $data[1], 19, 8, true );
 
     if ( $type == 'support' )
-        return array_slice( $data[1], 27, 7 );
+        return array_slice( $data[1], 27, 7, true );
 
-    return array_slice( $data[1], 2 );
+    return array_slice( $data[1], 2, null, true );
 }
 
 function get_hero_name_by_index( $data, $hero_id )
@@ -72,13 +72,13 @@ function heroes_strong_against( $data, $hero_id )
 {
     $counters = [];
 
-    $hero_row = $data[ $hero_id +2 ];
+    $hero_row = $data[ $hero_id ];
 
     foreach ( $hero_row as $counter_index => $wl )
         if ( $wl == 'L' )
             $counters[] = get_hero_name_by_index( $data, $counter_index );
 
-    $hero_col = array_column( $data, $hero_id +2 );
+    $hero_col = array_column( $data, $hero_id );
 
     foreach ( $hero_col as $counter_index => $wl )
         if ( $wl == 'W' )
