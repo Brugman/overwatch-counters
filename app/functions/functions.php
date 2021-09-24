@@ -75,13 +75,13 @@ function heroes_strong_against( $data, $hero_id )
     $hero_row = $data[ $hero_id ];
 
     foreach ( $hero_row as $counter_index => $wl )
-        if ( $wl == 'L' )
+        if ( $wl == '1' )
             $counters[] = get_hero_name_by_index( $data, $counter_index );
 
     $hero_col = array_column( $data, $hero_id );
 
     foreach ( $hero_col as $counter_index => $wl )
-        if ( $wl == 'W' )
+        if ( $wl == '5' )
             $counters[] = get_hero_name_by_index( $data, $counter_index );
 
     return $counters;
@@ -95,7 +95,7 @@ function slugify_name( $name )
 function get_source_data( $gsheet_url = false )
 {
     if ( !$gsheet_url || empty( $gsheet_url ) )
-        $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSecW57HwpBfbcivjEPGWkVD6iP-tDj13JbWDt1oAA6f7JYaGoRRVKswyyjPCXJ2KRITFmcvxflBa-0/pub?gid=0&single=true&output=csv';
+        $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
 
     $source_csv = @file_get_contents( $gsheet_url );
 
@@ -104,7 +104,7 @@ function get_source_data( $gsheet_url = false )
 
     $source_data = convert_to_array( $source_csv );
 
-    if ( !in_array( $source_data[3][2], ['W','L'] ) )
+    if ( !in_array( $source_data[3][2], ['5','4','3','2','1'] ) )
         return [ false, 'Google Sheets data has not properly saved.' ];
 
     return [ true, $source_data ];
