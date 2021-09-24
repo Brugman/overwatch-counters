@@ -1,6 +1,6 @@
 <?php
 
-[ $success, $data ] = get_source_data( APP_GSHEET_URL );
+[ $success, $data ] = get_data( APP_GSHEET_URL );
 
 if ( !$success )
 {

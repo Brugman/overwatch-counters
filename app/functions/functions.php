@@ -92,22 +92,63 @@ function slugify_name( $name )
     return str_replace( [' ','.'], '', strtolower( $name ) );
 }
 
-function get_source_data( $gsheet_url = false )
+function cache_file()
+{
+    return dirname( __DIR__ ).'/cache/cache.json';
+}
+
+function get_live_data( $gsheet_url = false )
 {
     if ( !$gsheet_url || empty( $gsheet_url ) )
         $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
 
-    $source_csv = @file_get_contents( $gsheet_url );
+    return @file_get_contents( $gsheet_url );
+}
 
-    if ( !$source_csv )
-        return [ false, 'Source data could not be loaded.' ];
+function get_cached_data()
+{
+    if ( !file_exists( cache_file() ) )
+        return false;
 
-    $source_data = convert_to_array( $source_csv );
+    $data_json = file_get_contents( cache_file() );
 
-    if ( !in_array( $source_data[3][2], ['5','4','3','2','1'] ) )
-        return [ false, 'Google Sheets data has not properly saved.' ];
+    return json_decode( $data_json, true );
+}
 
-    return [ true, $source_data ];
+function set_cached_data( $data )
+{
+    $data_json = json_encode([
+        'timestamp' => time(),
+        'data'      => $data,
+    ]);
+
+    file_put_contents( cache_file(), $data_json );
+}
+
+function get_data( $gsheet_url = false )
+{
+    // get cached data
+    $cached_data = get_cached_data();
+
+    if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
+        return [ true, $cached_data['data'] ];
+
+    // get live data
+    $live_data_csv = get_live_data( $gsheet_url );
+
+    if ( !$live_data_csv )
+        return [ false, 'Data could not be loaded.' ];
+
+    // convert csv
+    $live_data = convert_to_array( $live_data_csv );
+
+    if ( !in_array( $live_data[3][2], ['5','4','3','2','1'] ) )
+        return [ false, 'Data was not properly saved.' ];
+
+    // set new cache
+    set_cached_data( $live_data );
+
+    return [ true, $live_data ];
 }
 
 function pipeify( $array = [] )
