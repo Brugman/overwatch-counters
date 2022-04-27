@@ -21,7 +21,7 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 
 ### Configuration
 
-1. Save a copy of [our Google Sheet](https://docs.google.com/spreadsheets/d/1Frw4LPBxlS2CjxHYfuP71tMnRMHabUmD9cAq9nKpXqk/edit?usp=sharing) to your own Drive.
+1. Save a copy of [our Google Sheet](https://docs.google.com/spreadsheets/d/1v-zzhduSF6UUw-9SNDhAkL9gC4Mppk2SQ0L0gz0CWS0/edit?usp=sharing) to your own Drive.
 1. `File`, `Publish to the web`, Select only page `1`, `Start publishing`.
 1. Change the `Web page` select to `CSV`, copy the URL.
 1. Visit your (sub)domain to generate the config file.
