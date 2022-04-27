@@ -28,7 +28,7 @@ foreach ( get_heroes( $data, $role ) as $hero_id => $hero_name )
 ?>
                 <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data, $hero_id ) );?>" title="<?=$hero_name;?>">
                     <div class="inner">
-                        <img src="/assets/images/hero-<?=slugify_name( $hero_name );?>.png" loading="eager" alt="<?=$hero_name;?>">
+                        <img src="/assets/images/ow1/hero-<?=slugify_name( $hero_name );?>.png" loading="eager" alt="<?=$hero_name;?>">
                     </div><!-- inner -->
                 </li><!-- hero -->
 <?php
