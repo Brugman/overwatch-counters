@@ -1,7 +1,7 @@
 # Overwatch Counters
 
 > Some enemy hero giving you trouble? Grab your favorite counter!\
-> Overwatch Counters is available online at [overwatch-counters.timbr.dev](https://overwatch-counters.timbr.dev/).
+> Overwatch Counters is available online at [overwatchcounters.com](https://overwatchcounters.com/).
 
 ![demo](/demo.gif)
 
