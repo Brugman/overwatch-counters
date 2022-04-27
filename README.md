@@ -5,6 +5,10 @@
 
 ![demo](/demo.gif)
 
+## Overwatch 2
+
+With the launch of the Overwatch 2 beta I'll be trying to making this app display different datasets, so we can set OW2 counters independant of OW1.
+
 ## Use your own counter data
 
 Tried the hosted version? Don't agree with our counter data? Want to use your own? Let's do it.
