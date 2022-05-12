@@ -1,4 +1,4 @@
-<div class="game-version js-game-version" data-game-version="1" style="display: none;">
+<div class="game-version js-game-version" data-game-version="1" style="">
 
 <?php foreach ( ['tank','damage','support'] as $role ): ?>
 

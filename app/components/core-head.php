@@ -22,5 +22,5 @@
     <link rel="shortcut icon" href="/favicon.ico?v=1">
 
 </head>
-<body>
+<body data-game-version="1">
 

@@ -8,40 +8,33 @@ body {
 .game-version-switch {
     text-align: center;
     svg {
-        // background-color: #222;
         width: 150px;
-        .logo {
-            fill: #333F49;
-        }
-        .frame {
-            fill: #333F49;
-        }
+        .logo { fill: #333F49; }
+        .frame,
         .number {
-            fill: @color-black;
+            transition: fill 0.15s ease-in-out 0s;
         }
+        .frame { fill: #333F49; }
+        .number { fill: @color-black; }
         a:hover {
-            .frame {
-                fill: #F06414;
-            }
-            .number {
-                fill: @color-white;
-            }
+            .frame { fill: #F06414; }
+            .number { fill: @color-white; }
         }
     }
 }
+body[data-game-version="1"] .game-version-switch svg a[data-game-version="1"] {
+    .frame { fill: #F06414; }
+    .number { fill: @color-white; }
+}
+body[data-game-version="2"] .game-version-switch svg a[data-game-version="2"] {
+    .frame { fill: #F06414; }
+    .number { fill: @color-white; }
+}
 .game-versions {
-    // background-color: #f09;
     margin-top: 15px;
 }
 .game-version {
 }
-// .wrapper {
-//     min-height: 100vh;
-//     padding: 30px;
-//     display: flex;
-//     justify-content: center; // horizontal
-//     align-items: center; // vertical
-// }
 .role {
     text-align: center;
 }

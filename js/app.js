@@ -15,6 +15,8 @@
             event.preventDefault();
             // get clicked version
             let clicked_version = button.dataset.gameVersion;
+            // set version on body for styling
+            document.querySelector('body').dataset.gameVersion = clicked_version;
             // get version contents
             let game_version_contents = document.querySelectorAll('.js-game-version');
             // foreach content
