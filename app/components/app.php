@@ -1,6 +1,6 @@
 <?php
 
-[ $success, $data ] = get_data( APP_GSHEET_URL );
+[ $success, $data ] = get_ow1_data( APP_GSHEET_URL );
 
 if ( !$success )
 {
@@ -8,13 +8,27 @@ if ( !$success )
     return;
 }
 
-$roles = ['tank','damage','support'];
-
 ?>
+
+<ul>
+    <li><a class="js-load-game-version" data-game-version="1" href="#" style="font-size: 20px;">OW1</a></li>
+    <li><a class="js-load-game-version" data-game-version="2" href="#" style="font-size: 20px;">OW2</a></li>
+</ul>
+
+<div class="version-wrapper">
+
+<div class="ow2-wrapper">
+
+    <p>This is OW2 content.</p>
+
+</div><!-- ow2 -->
+
+<div class="ow1-wrapper" style="display: none;">
+
 <div class="wrapper">
     <div class="wrapper-inner">
 
-<?php foreach ( $roles as $role ): ?>
+<?php foreach ( ['tank','damage','support'] as $role ): ?>
 
         <div class="role">
 
@@ -43,4 +57,8 @@ foreach ( get_heroes( $data, $role ) as $hero_id => $hero_name )
 
     </div><!-- wrapper-inner -->
 </div><!-- wrapper -->
+
+</div><!-- ow1 -->
+
+</div>
 

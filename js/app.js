@@ -1,5 +1,18 @@
 (function() {
 
+    //
+    // data-game-version
+
+    let qwe = document.getElementsByClassName( 'js-load-game-version' );
+
+    qwe.addEventListener( 'click', function ( event ) {
+        // prevent default
+        event.stopPropagation();
+        event.preventDefault();
+        console.log( '----' );
+        console.log( 'you clicked!' );
+    });
+
     let hero_lists = document.querySelectorAll('.heroes');
     let hero_items = document.querySelectorAll('.hero');
 

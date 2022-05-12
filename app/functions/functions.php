@@ -92,12 +92,12 @@ function slugify_name( $name )
     return str_replace( [' ','.'], '', strtolower( $name ) );
 }
 
-function cache_file()
+function cache_file_ow1()
 {
     return dirname( __DIR__ ).'/cache/cache.json';
 }
 
-function get_live_data( $gsheet_url = false )
+function get_live_ow1_data( $gsheet_url = false )
 {
     if ( !$gsheet_url || empty( $gsheet_url ) )
         $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
@@ -105,36 +105,36 @@ function get_live_data( $gsheet_url = false )
     return @file_get_contents( $gsheet_url );
 }
 
-function get_cached_data()
+function get_cached_ow1_data()
 {
-    if ( !file_exists( cache_file() ) )
+    if ( !file_exists( cache_file_ow1() ) )
         return false;
 
-    $data_json = file_get_contents( cache_file() );
+    $data_json = file_get_contents( cache_file_ow1() );
 
     return json_decode( $data_json, true );
 }
 
-function set_cached_data( $data )
+function set_cached_ow1_data( $data )
 {
     $data_json = json_encode([
         'timestamp' => time(),
         'data'      => $data,
     ]);
 
-    file_put_contents( cache_file(), $data_json );
+    file_put_contents( cache_file_ow1(), $data_json );
 }
 
-function get_data( $gsheet_url = false )
+function get_ow1_data( $gsheet_url = false )
 {
     // get cached data
-    $cached_data = get_cached_data();
+    $cached_data = get_cached_ow1_data();
 
     if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
         return [ true, $cached_data['data'] ];
 
     // get live data
-    $live_data_csv = get_live_data( $gsheet_url );
+    $live_data_csv = get_live_ow1_data( $gsheet_url );
 
     if ( !$live_data_csv )
         return [ false, 'Data could not be loaded.' ];
@@ -146,7 +146,7 @@ function get_data( $gsheet_url = false )
         return [ false, 'Data was not properly saved.' ];
 
     // set new cache
-    set_cached_data( $live_data );
+    set_cached_ow1_data( $live_data );
 
     return [ true, $live_data ];
 }
