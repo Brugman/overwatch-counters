@@ -1,16 +1,37 @@
 body {
     background-color: @color-black;
+    padding: 30px;
     .font-body;
     font-size: 20px;
     color: @color-white;
 }
-.game-version-buttons {
-    li {}
-    a {
-        font-size: 2rem;
+.game-version-switch {
+    text-align: center;
+    svg {
+        // background-color: #222;
+        width: 150px;
+        .logo {
+            fill: #333F49;
+        }
+        .frame {
+            fill: #333F49;
+        }
+        .number {
+            fill: @color-black;
+        }
+        a:hover {
+            .frame {
+                fill: #F06414;
+            }
+            .number {
+                fill: @color-white;
+            }
+        }
     }
 }
 .game-versions {
+    // background-color: #f09;
+    margin-top: 15px;
 }
 .game-version {
 }
@@ -30,6 +51,7 @@ body {
     letter-spacing: 1px;
     text-transform: uppercase;
     font-size: 15px;
+    user-select: none;
     svg {
         position: relative;
         top: 1px;

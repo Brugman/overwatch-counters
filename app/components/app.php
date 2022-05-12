@@ -10,10 +10,9 @@ if ( !$success )
 
 ?>
 
-<ul class="game-version-buttons">
-    <li><a class="js-activate-game-version" data-game-version="1" href="#">OW1</a></li>
-    <li><a class="js-activate-game-version" data-game-version="2" href="#">OW2</a></li>
-</ul>
+<div class="game-version-switch">
+    <?=include_svg('game-version-switch');?>
+</div>
 
 <div class="game-versions">
 
