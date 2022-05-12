@@ -16,7 +16,7 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 ### Installation
 
 1. `git clone`
-1. `npm i`
+1. `pnpm i`
 1. Map `public_html` to a (sub)domain.
 
 ### Configuration
@@ -40,10 +40,11 @@ See [Installation](#Installation).
 
 ### Build tools
 
-Command | Minification | Sourcemaps
+Command | Minification | Sourcemaps | Continuous
 :--- |:--- |:---
-`gulp` | :heavy_minus_sign: | :heavy_check_mark:
-`gulp --env=prod` | :heavy_check_mark: | :heavy_minus_sign:
+`pnpm gulp --env=prod` | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:
+`pnpm gulp` | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign:
+`pnpm gulp watch` | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark:
 
 ## Author
 

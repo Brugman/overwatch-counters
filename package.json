@@ -2,7 +2,7 @@
   "name": "overwatch-counters",
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "npx gulp --env=prod"
+    "postinstall": "pnpm gulp --env=prod"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
