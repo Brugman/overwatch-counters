@@ -1,18 +1,37 @@
 (function() {
 
-    //
-    // data-game-version
+    /**
+     * Version Switcher.
+     */
 
-    let qwe = document.getElementsByClassName( 'js-load-game-version' );
-
-    qwe.addEventListener( 'click', function ( event ) {
-        // prevent default
-        event.stopPropagation();
-        event.preventDefault();
-        console.log( '----' );
-        console.log( 'you clicked!' );
+    // get buttons
+    let game_version_buttons = document.querySelectorAll('.js-activate-game-version');
+    // foreach button
+    game_version_buttons.forEach( function ( button ) {
+        // on click
+        button.addEventListener( 'click', function ( event ) {
+            // prevent default
+            event.stopPropagation();
+            event.preventDefault();
+            // get clicked version
+            let clicked_version = button.dataset.gameVersion;
+            // get version contents
+            let game_version_contents = document.querySelectorAll('.js-game-version');
+            // foreach content
+            game_version_contents.forEach( function ( content ) {
+                // decide display value
+                let display_value = ( content.dataset.gameVersion == clicked_version ? 'block' : 'none' );
+                // set display value
+                content.style.display = display_value;
+            });
+        });
     });
 
+    /**
+     * Display Counters.
+     */
+
+/*
     let hero_lists = document.querySelectorAll('.heroes');
     let hero_items = document.querySelectorAll('.hero');
 
@@ -55,5 +74,6 @@
             }
         });
     });
+*/
 
 })();
