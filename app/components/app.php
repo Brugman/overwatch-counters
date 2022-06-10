@@ -1,10 +1,10 @@
 <?php
 
-[ $success, $data ] = get_ow1_data( APP_GSHEET_URL );
+[ $success, $data_ow1, $data_ow2 ] = get_data();
 
 if ( !$success )
 {
-    echo '<p class="error">'.$data.'</p>';
+    echo '<p class="error">'.$data_ow1.'</p>';
     return;
 }
 

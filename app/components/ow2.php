@@ -9,10 +9,10 @@
             <ul class="heroes neutral">
 <?php
 
-foreach ( get_heroes( $data, $role ) as $hero_id => $hero_name )
+foreach ( get_heroes( $data_ow2, $role ) as $hero_id => $hero_name )
 {
 ?>
-                <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data, $hero_id ) );?>" title="<?=$hero_name;?>">
+                <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data_ow2, $hero_id ) );?>" title="<?=$hero_name;?>">
                     <div class="inner">
                         <img src="/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png" loading="eager" alt="<?=$hero_name;?>">
                     </div><!-- inner -->

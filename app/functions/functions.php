@@ -97,15 +97,27 @@ function cache_file_ow1()
     return dirname( __DIR__ ).'/cache/cache.json';
 }
 
-function get_live_ow1_data( $gsheet_url = false )
+function get_live_data_ow1()
 {
-    if ( !$gsheet_url || empty( $gsheet_url ) )
-        $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
+    $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
+
+    if ( defined( APP_GSHEET_URL_OW1 ) && !empty( APP_GSHEET_URL_OW1 ) )
+        $gsheet_url = APP_GSHEET_URL_OW1;
 
     return @file_get_contents( $gsheet_url );
 }
 
-function get_cached_ow1_data()
+function get_live_data_ow2()
+{
+    $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=397978311&single=true&output=csv';
+
+    if ( defined( APP_GSHEET_URL_OW1 ) && !empty( APP_GSHEET_URL_OW1 ) )
+        $gsheet_url = APP_GSHEET_URL_OW1;
+
+    return @file_get_contents( $gsheet_url );
+}
+
+function get_cached_data()
 {
     if ( !file_exists( cache_file_ow1() ) )
         return false;
@@ -115,7 +127,7 @@ function get_cached_ow1_data()
     return json_decode( $data_json, true );
 }
 
-function set_cached_ow1_data( $data )
+function set_cached_data( $data )
 {
     $data_json = json_encode([
         'timestamp' => time(),
@@ -125,30 +137,34 @@ function set_cached_ow1_data( $data )
     file_put_contents( cache_file_ow1(), $data_json );
 }
 
-function get_ow1_data( $gsheet_url = false )
+function get_data()
 {
     // get cached data
-    $cached_data = get_cached_ow1_data();
+    // $cached_data = get_cached_data();
 
-    if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
-        return [ true, $cached_data['data'] ];
+    // if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
+    //     return [ true, $cached_data['data'] ];
 
     // get live data
-    $live_data_csv = get_live_ow1_data( $gsheet_url );
+    $live_data_ow1_csv = get_live_data_ow1();
+    $live_data_ow2_csv = get_live_data_ow2();
 
-    if ( !$live_data_csv )
-        return [ false, 'Data could not be loaded.' ];
+    if ( !$live_data_ow1_csv || !$live_data_ow2_csv )
+        return [ false, 'Data could not be loaded.', '' ];
 
     // convert csv
-    $live_data = convert_to_array( $live_data_csv );
+    $live_data_ow1 = convert_to_array( $live_data_ow1_csv );
+    $live_data_ow2 = convert_to_array( $live_data_ow2_csv );
 
-    if ( !in_array( $live_data[3][2], ['5','4','3','2','1'] ) )
-        return [ false, 'Data was not properly saved.' ];
+    if ( !in_array( $live_data_ow1[3][2], ['5','4','3','2','1'] ) )
+        return [ false, 'Data was not properly saved.', '' ];
+    if ( !in_array( $live_data_ow2[3][2], ['5','4','3','2','1'] ) )
+        return [ false, 'Data was not properly saved.', '' ];
 
     // set new cache
-    set_cached_ow1_data( $live_data );
+    // set_cached_data( $live_data );
 
-    return [ true, $live_data ];
+    return [ true, $live_data_ow1, $live_data_ow2 ];
 }
 
 function pipeify( $array = [] )
