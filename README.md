@@ -5,9 +5,22 @@
 
 ![demo](/demo.gif)
 
-## Overwatch 2
-
-With the launch of the Overwatch 2 beta I'll be trying to making this app display different datasets, so we can set OW2 counters independant of OW1.
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
 ## Use your own counter data
 
@@ -21,12 +34,14 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 
 ### Configuration
 
+1. Copy `/app/config.example.php` to `/app/config.php`.
+1. Edit `/app/config.php`.
 1. Save a copy of [our Google Sheet](https://docs.google.com/spreadsheets/d/1v-zzhduSF6UUw-9SNDhAkL9gC4Mppk2SQ0L0gz0CWS0/edit?usp=sharing) to your own Drive.
 1. `File`, `Publish to the web`, Select only page `1`, `Start publishing`.
-1. Change the `Web page` select to `CSV`, copy the URL.
-1. Visit your (sub)domain to generate the config file.
-1. Edit `/app/config.php` and add your sheet URL.
-1. Reload your (sub)domain.
+1. Change the `Web page` select to `CSV`, copy the URL to your config.
+1. `File`, `Publish to the web`, Select only page `2`, `Start publishing`.
+1. Change the `Web page` select to `CSV`, copy the URL to your config.
+1. Visit the (sub)domain.
 
 ## Contributing
 
@@ -41,7 +56,7 @@ See [Installation](#Installation).
 ### Build tools
 
 Command | Minification | Sourcemaps | Continuous
-:--- |:--- |:---
+:--- |:--- |:--- |:---
 `pnpm gulp --env=prod` | :heavy_check_mark: | :heavy_minus_sign: | :heavy_minus_sign:
 `pnpm gulp` | :heavy_minus_sign: | :heavy_check_mark: | :heavy_minus_sign:
 `pnpm gulp watch` | :heavy_minus_sign: | :heavy_check_mark: | :heavy_check_mark:
