@@ -1,5 +1,5 @@
 <!-- app -->
-<script src="/assets/app.min.js"></script>
+<script defer src="/assets/app.min.js"></script>
 
 </body>
 </html>
