@@ -106,7 +106,7 @@ function slugify_name( $name )
     return str_replace( [' ','.'], '', strtolower( $name ) );
 }
 
-function cache_file_ow1()
+function cache_file()
 {
     return dirname( __DIR__ ).'/cache/cache.json';
 }
@@ -133,10 +133,10 @@ function get_live_data_ow2()
 
 function get_cached_data()
 {
-    if ( !file_exists( cache_file_ow1() ) )
+    if ( !file_exists( cache_file() ) )
         return false;
 
-    $data_json = file_get_contents( cache_file_ow1() );
+    $data_json = file_get_contents( cache_file() );
 
     return json_decode( $data_json, true );
 }
@@ -148,16 +148,16 @@ function set_cached_data( $data )
         'data'      => $data,
     ]);
 
-    file_put_contents( cache_file_ow1(), $data_json );
+    file_put_contents( cache_file(), $data_json );
 }
 
 function get_data()
 {
     // get cached data
-    // $cached_data = get_cached_data();
+    $cached_data = get_cached_data();
 
-    // if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
-    //     return [ true, $cached_data['data'] ];
+    if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
+        return [ true, $cached_data['data']['ow1'], $cached_data['data']['ow2'] ];
 
     // get live data
     $live_data_ow1_csv = get_live_data_ow1();
@@ -176,7 +176,7 @@ function get_data()
         return [ false, 'Data was not properly saved.', '' ];
 
     // set new cache
-    // set_cached_data( $live_data );
+    set_cached_data( [ 'ow1' => $live_data_ow1, 'ow2' => $live_data_ow2 ] );
 
     return [ true, $live_data_ow1, $live_data_ow2 ];
 }
