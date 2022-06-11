@@ -205,3 +205,19 @@ function include_svg( $filename = false )
     return file_get_contents( $path );
 }
 
+function shorten_hero_name( $name )
+{
+    $list = [
+        'Wrecking Ball' => 'Ball',
+        'Widowmaker' => 'Widow',
+        // 'Reinhardt' => 'Rein',
+        // 'Symmetra' => 'Sym',
+        // 'Torbjorn' => 'Torb',
+    ];
+
+    if ( isset( $list[ $name ] ) )
+        return $list[ $name ];
+
+    return $name;
+}
+
