@@ -2,7 +2,7 @@
 
 <?php foreach ( ['tank','damage','support'] as $role ): ?>
 
-        <div class="role">
+        <div class="role role-<?=$role;?>">
 
             <p class="title"><?=include_svg('icon-role-'.$role);?><?=ucfirst( $role );?></p>
 
