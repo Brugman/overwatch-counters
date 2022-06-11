@@ -49,7 +49,7 @@ function convert_to_array( $data )
     return $data;
 }
 
-function get_heroes( $data, $type = false )
+function get_heroes_ow1( $data, $type = false )
 {
     if ( $type == 'damage' )
         return array_slice( $data[1], 2, 17, true );
@@ -59,6 +59,20 @@ function get_heroes( $data, $type = false )
 
     if ( $type == 'support' )
         return array_slice( $data[1], 27, 7, true );
+
+    return array_slice( $data[1], 2, null, true );
+}
+
+function get_heroes_ow2( $data, $type = false )
+{
+    if ( $type == 'damage' )
+        return array_slice( $data[1], 2, 18, true );
+
+    if ( $type == 'tank' )
+        return array_slice( $data[1], 20, 8, true );
+
+    if ( $type == 'support' )
+        return array_slice( $data[1], 28, 7, true );
 
     return array_slice( $data[1], 2, null, true );
 }
@@ -109,7 +123,7 @@ function get_live_data_ow1()
 
 function get_live_data_ow2()
 {
-    $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=397978311&single=true&output=csv';
+    $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=1367246486&single=true&output=csv';
 
     if ( defined( APP_GSHEET_URL_OW1 ) && !empty( APP_GSHEET_URL_OW1 ) )
         $gsheet_url = APP_GSHEET_URL_OW1;
