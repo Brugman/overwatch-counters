@@ -1,46 +1,27 @@
 <?php
 
-[ $success, $data ] = get_data( APP_GSHEET_URL );
+[ $success, $data_ow1, $data_ow2 ] = get_data();
 
 if ( !$success )
 {
-    echo '<p class="error">'.$data.'</p>';
+    echo '<p class="error">'.$data_ow1.'</p>';
     return;
 }
 
-$roles = ['tank','damage','support'];
-
 ?>
-<div class="wrapper">
-    <div class="wrapper-inner">
 
-<?php foreach ( $roles as $role ): ?>
+<div class="game-version-switch">
+    <?=include_svg('game-version-switch');?>
+</div>
 
-        <div class="role">
+<div class="game-versions">
 
-            <p class="title"><?=include_svg('icon-role-'.$role);?><?=ucfirst( $role );?></p>
-
-            <ul class="heroes neutral">
 <?php
 
-foreach ( get_heroes( $data, $role ) as $hero_id => $hero_name )
-{
-?>
-                <li class="hero hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data, $hero_id ) );?>" title="<?=$hero_name;?>">
-                    <div class="inner">
-                        <img src="/assets/images/ow1/hero-<?=slugify_name( $hero_name );?>.png" loading="eager" alt="<?=$hero_name;?>">
-                    </div><!-- inner -->
-                </li><!-- hero -->
-<?php
-}
+include 'ow1.php';
+include 'ow2.php';
 
 ?>
-            </ul><!-- heroes -->
 
-        </div><!-- role -->
-
-<?php endforeach; // $roles ?>
-
-    </div><!-- wrapper-inner -->
-</div><!-- wrapper -->
+</div><!-- game-versions -->
 

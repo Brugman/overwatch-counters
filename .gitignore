@@ -2,5 +2,8 @@
 *.sublime-*
 /app/cache/cache.json
 /app/config.php
+/design/
 /misc/
 /node_modules/
+/public_html/assets/app.min.*
+/temp/
