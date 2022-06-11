@@ -1,4 +1,4 @@
-<div class="game-version js-game-version" data-game-version="1" style="">
+<div class="game-version js-game-version" data-game-version="1" style="<?=( ( $_COOKIE['active_version'] ?? 1 ) == 1 ? '' : 'display: none;' );?>">
 
 <?php foreach ( ['tank','damage','support'] as $role ): ?>
 

@@ -15,6 +15,8 @@ game_version_buttons.forEach( function ( button ) {
         let clicked_version = button.dataset.gameVersion;
         // set version on body for styling
         document.querySelector('body').dataset.gameVersion = clicked_version;
+        // set cookie
+        document.cookie = `active_version=${clicked_version}; path=/; max-age=${60*60*24*30}`;
         // get version contents
         let game_version_contents = document.querySelectorAll('.js-game-version');
         // foreach content
