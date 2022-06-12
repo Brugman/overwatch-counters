@@ -125,8 +125,8 @@ function get_live_data_ow2()
 {
     $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=1367246486&single=true&output=csv';
 
-    if ( defined('APP_GSHEET_URL_OW1') && !empty( APP_GSHEET_URL_OW1 ) )
-        $gsheet_url = APP_GSHEET_URL_OW1;
+    if ( defined('APP_GSHEET_URL_OW2') && !empty( APP_GSHEET_URL_OW2 ) )
+        $gsheet_url = APP_GSHEET_URL_OW2;
 
     return @file_get_contents( $gsheet_url );
 }
