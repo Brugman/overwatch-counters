@@ -19,26 +19,39 @@ body {
     text-align: center;
     svg {
         width: 150px;
-        .logo,
+        .logo-top,
+        .logo-bottom,
         .frame,
         .number {
             transition: fill 0.15s ease-in-out 0s;
         }
         body[data-game-version="1"] & {
-            .logo { fill: @color-white; }
+            .logo-top { fill: @color-orange-old; }
+            .logo-bottom { fill: @color-white; }
             .frame { fill: @color-white; }
             .number { fill: @color-black; }
-            a:hover,
             a[data-game-version="1"] {
-                .frame { fill: @color-orange; }
+                .frame { fill: @color-orange-old; }
                 .number { fill: @color-white; }
+            }
+            a[data-game-version="2"] {
+                .frame { fill: fade( @color-white, 20% ); }
+                &:hover {
+                    .number { fill: @color-white; }
+                }
             }
         }
         body[data-game-version="2"] & {
-            .logo { fill: @color-grey; }
+            .logo-top { fill: @color-grey; }
+            .logo-bottom { fill: @color-grey; }
             .frame { fill: @color-grey; }
             .number { fill: @color-bluegrey; }
-            a:hover,
+            a[data-game-version="1"] {
+                .frame { fill: fade( @color-grey, 50% ); }
+                &:hover {
+                    .number { fill: @color-white; }
+                }
+            }
             a[data-game-version="2"] {
                 .frame { fill: @color-orange; }
                 .number { fill: @color-white; }
