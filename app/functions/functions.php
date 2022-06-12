@@ -66,13 +66,13 @@ function get_heroes_ow1( $data, $type = false )
 function get_heroes_ow2( $data, $type = false )
 {
     if ( $type == 'damage' )
-        return array_slice( $data[1], 2, 18, true );
+        return array_slice( $data[1], 2, 17, true );
 
     if ( $type == 'tank' )
-        return array_slice( $data[1], 20, 8, true );
+        return array_slice( $data[1], 19, 10, true );
 
     if ( $type == 'support' )
-        return array_slice( $data[1], 28, 7, true );
+        return array_slice( $data[1], 29, 7, true );
 
     return array_slice( $data[1], 2, null, true );
 }
@@ -213,6 +213,7 @@ function shorten_hero_name( $name )
         // 'Reinhardt' => 'Rein',
         // 'Symmetra' => 'Sym',
         // 'Torbjorn' => 'Torb',
+        'Junker Queen' => 'JQ',
     ];
 
     if ( isset( $list[ $name ] ) )
