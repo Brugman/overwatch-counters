@@ -13,6 +13,11 @@ function dd( $var )
     exit;
 }
 
+function asset_version()
+{
+    return 'v220617-1';
+}
+
 function load_config()
 {
     $config_example = dirname( dirname( __FILE__ ) ).'/config.example.php';

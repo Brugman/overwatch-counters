@@ -13,7 +13,7 @@
     <title>Overwatch Counters</title>
 
     <!-- link css -->
-    <link rel="stylesheet" href="/assets/app.min.css">
+    <link rel="stylesheet" href="/assets/app.min.css?<?=asset_version();?>">
 
     <!-- app favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=1">
