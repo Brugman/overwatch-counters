@@ -72,7 +72,7 @@ function get_heroes_ow2( $data, $type = false )
         return array_slice( $data[1], 19, 10, true );
 
     if ( $type == 'support' )
-        return array_slice( $data[1], 29, 7, true );
+        return array_slice( $data[1], 29, 8, true );
 
     return array_slice( $data[1], 2, null, true );
 }
