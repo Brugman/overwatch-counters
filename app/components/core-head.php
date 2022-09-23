@@ -22,5 +22,5 @@
     <link rel="shortcut icon" href="/favicon.ico?v=1">
 
 </head>
-<body data-game-version="<?=( $_COOKIE['active_version'] ?? 1 );?>">
+<body data-game-version="<?=( $_COOKIE['active_version'] ?? ( date('YmdHi') > 202210030600 ? 2 : 1 ) );?>">
 
