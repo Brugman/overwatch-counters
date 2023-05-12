@@ -15,7 +15,7 @@ function dd( $var )
 
 function asset_version()
 {
-    return 'v221005-1';
+    return 'v230512-1';
 }
 
 function load_config()
