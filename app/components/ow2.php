@@ -26,19 +26,5 @@ foreach ( get_heroes_ow2( $data_ow2, $role ) as $hero_id => $hero_name )
 
 <?php endforeach; // $roles ?>
 
-    <div class="note">
-        <p>The following heroes are new or reworked, so I don't have new counter data on them yet. If you want to contribute <a href="https://discord.gg/zv6PkWS" target="_blank">contact me on Discord</a>.</p>
-        <ul>
-            <li>Bastion</li>
-            <li>Doomfist</li>
-            <li>Junker Queen</li>
-            <li>Kiriko</li>
-            <li>McCree</li>
-            <li>Mei</li>
-            <li>Orisa</li>
-            <li>Sojourn</li>
-        </ul>
-    </div>
-
 </div><!-- game-version -->
 
