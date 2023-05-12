@@ -74,10 +74,10 @@ function get_heroes_ow2( $data, $type = false )
         return array_slice( $data[1], 2, 17, true );
 
     if ( $type == 'tank' )
-        return array_slice( $data[1], 19, 10, true );
+        return array_slice( $data[1], 19, 11, true );
 
     if ( $type == 'support' )
-        return array_slice( $data[1], 29, 8, true );
+        return array_slice( $data[1], 30, 10, true );
 
     return array_slice( $data[1], 2, null, true );
 }
