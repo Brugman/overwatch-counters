@@ -1,5 +1,5 @@
 <!-- app -->
-<script defer src="/assets/app.min.js?<?=asset_version();?>"></script>
+<script defer src="https://cdn.overwatchcounters.com/assets/app.min.js?<?=asset_version();?>"></script>
 
 </body>
 </html>
