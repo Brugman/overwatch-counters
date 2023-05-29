@@ -12,6 +12,10 @@
     <!-- title -->
     <title>Overwatch Counters</title>
 
+    <!-- preload -->
+    <link rel="preload" href="https://cdn.overwatchcounters.com/assets/app.min.css?<?=asset_version();?>" as="style">
+    <link rel="preload" href="https://cdn.overwatchcounters.com/assets/app.min.js?<?=asset_version();?>" as="script">
+
     <!-- link css -->
     <link rel="stylesheet" href="https://cdn.overwatchcounters.com/assets/app.min.css?<?=asset_version();?>">
 
