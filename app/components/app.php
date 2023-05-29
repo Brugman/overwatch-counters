@@ -18,8 +18,8 @@ if ( !$success )
 
 <?php
 
-include 'ow1.php';
 include 'ow2.php';
+include 'ow1.php';
 
 ?>
 
