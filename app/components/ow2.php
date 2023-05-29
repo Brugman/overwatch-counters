@@ -13,7 +13,11 @@ foreach ( get_heroes_ow2( $data_ow2, $role ) as $hero_id => $hero_name )
 {
 ?>
             <li class="hero js-hero js-hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data_ow2, $hero_id ) );?>" title="<?=$hero_name;?>">
-                <img src="https://cdn.overwatchcounters.com/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png" loading="lazy" alt="<?=$hero_name;?>">
+                <picture>
+                    <source srcset="https://cdn.overwatchcounters.com/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.webp?<?=asset_version();?>" type="image/webp">
+                    <source srcset="https://cdn.overwatchcounters.com/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" type="image/png">
+                    <img src="https://cdn.overwatchcounters.com/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" alt="<?=$hero_name;?>">
+                </picture>
                 <div class="name"><?=shorten_hero_name( $hero_name );?></div>
             </li><!-- hero -->
 <?php
