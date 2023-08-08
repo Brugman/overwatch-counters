@@ -15,7 +15,7 @@ function dd( $var )
 
 function asset_version()
 {
-    return 'v230530-1';
+    return 'v230808-1';
 }
 
 function cdn_if_cdn()

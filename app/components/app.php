@@ -26,9 +26,9 @@ foreach ( get_heroes( $data, $role ) as $hero_id => $hero_name )
 ?>
             <li class="hero js-hero js-hero-<?=slugify_name( $hero_name );?>" data-is-countered-by="<?=pipeify( heroes_strong_against( $data, $hero_id ) );?>" title="<?=$hero_name;?>">
                 <picture>
-                    <source srcset="<?=cdn_if_cdn();?>/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.webp?<?=asset_version();?>" type="image/webp">
-                    <source srcset="<?=cdn_if_cdn();?>/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" type="image/png">
-                    <img src="<?=cdn_if_cdn();?>/assets/images/ow2/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" alt="<?=$hero_name;?>">
+                    <source srcset="<?=cdn_if_cdn();?>/assets/images/hero-<?=slugify_name( $hero_name );?>.webp?<?=asset_version();?>" type="image/webp">
+                    <source srcset="<?=cdn_if_cdn();?>/assets/images/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" type="image/png">
+                    <img src="<?=cdn_if_cdn();?>/assets/images/hero-<?=slugify_name( $hero_name );?>.png?<?=asset_version();?>" alt="<?=$hero_name;?>">
                 </picture>
                 <div class="name"><?=shorten_hero_name( $hero_name );?></div>
             </li><!-- hero -->
