@@ -18,6 +18,14 @@ function asset_version()
     return 'v230530-1';
 }
 
+function cdn_if_cdn()
+{
+    if ( 0 )
+        return 'https://cdn.overwatchcounters.com';
+
+    return '';
+}
+
 function load_config()
 {
     $config_example = dirname( dirname( __FILE__ ) ).'/config.example.php';
@@ -54,21 +62,7 @@ function convert_to_array( $data )
     return $data;
 }
 
-function get_heroes_ow1( $data, $type = false )
-{
-    if ( $type == 'damage' )
-        return array_slice( $data[1], 2, 17, true );
-
-    if ( $type == 'tank' )
-        return array_slice( $data[1], 19, 8, true );
-
-    if ( $type == 'support' )
-        return array_slice( $data[1], 27, 7, true );
-
-    return array_slice( $data[1], 2, null, true );
-}
-
-function get_heroes_ow2( $data, $type = false )
+function get_heroes( $data, $type = false )
 {
     if ( $type == 'damage' )
         return array_slice( $data[1], 2, 17, true );
@@ -116,17 +110,7 @@ function cache_file()
     return dirname( __DIR__ ).'/cache/cache.json';
 }
 
-function get_live_data_ow1()
-{
-    $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=0&single=true&output=csv';
-
-    if ( defined('APP_GSHEET_URL_OW1') && !empty( APP_GSHEET_URL_OW1 ) )
-        $gsheet_url = APP_GSHEET_URL_OW1;
-
-    return @file_get_contents( $gsheet_url );
-}
-
-function get_live_data_ow2()
+function get_live_data()
 {
     $gsheet_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSBY-rl90LKc2sv1nZCpwpkRhSoczelOsBe-Uhs9UH_b_TILDDak1Vvbh3HkMjn0vO5xet8bnmGSiHe/pub?gid=1367246486&single=true&output=csv';
 
@@ -162,28 +146,24 @@ function get_data()
     $cached_data = get_cached_data();
 
     if ( $cached_data && $cached_data['timestamp'] > ( time() - 60*60*24 ) )
-        return [ true, $cached_data['data']['ow1'], $cached_data['data']['ow2'] ];
+        return [ true, $cached_data['data']['ow2'] ];
 
     // get live data
-    $live_data_ow1_csv = get_live_data_ow1();
-    $live_data_ow2_csv = get_live_data_ow2();
+    $live_data_csv = get_live_data();
 
-    if ( !$live_data_ow1_csv || !$live_data_ow2_csv )
+    if ( !$live_data_csv )
         return [ false, 'Data could not be loaded.', '' ];
 
     // convert csv
-    $live_data_ow1 = convert_to_array( $live_data_ow1_csv );
-    $live_data_ow2 = convert_to_array( $live_data_ow2_csv );
+    $live_data = convert_to_array( $live_data_csv );
 
-    if ( !in_array( $live_data_ow1[3][2], ['5','4','3','2','1'] ) )
-        return [ false, 'Data was not properly saved.', '' ];
-    if ( !in_array( $live_data_ow2[3][2], ['5','4','3','2','1'] ) )
+    if ( !in_array( $live_data[3][2], ['5','4','3','2','1'] ) )
         return [ false, 'Data was not properly saved.', '' ];
 
     // set new cache
-    set_cached_data( [ 'ow1' => $live_data_ow1, 'ow2' => $live_data_ow2 ] );
+    set_cached_data( [ 'ow2' => $live_data ] );
 
-    return [ true, $live_data_ow1, $live_data_ow2 ];
+    return [ true, $live_data ];
 }
 
 function pipeify( $array = [] )

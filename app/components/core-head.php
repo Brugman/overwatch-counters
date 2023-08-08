@@ -12,18 +12,18 @@
     <title>Overwatch Counters</title>
 
     <!-- preload -->
-    <link rel="preload" href="https://cdn.overwatchcounters.com/assets/app.min.css?<?=asset_version();?>" as="style">
-    <link rel="preload" href="https://cdn.overwatchcounters.com/assets/app.min.js?<?=asset_version();?>" as="script">
+    <link rel="preload" href="<?=cdn_if_cdn();?>/assets/app.min.css?<?=asset_version();?>" as="style">
+    <link rel="preload" href="<?=cdn_if_cdn();?>/assets/app.min.js?<?=asset_version();?>" as="script">
 
     <!-- link css -->
-    <link rel="stylesheet" href="https://cdn.overwatchcounters.com/assets/app.min.css?<?=asset_version();?>">
+    <link rel="stylesheet" href="<?=cdn_if_cdn();?>/assets/app.min.css?<?=asset_version();?>">
 
     <!-- app favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.overwatchcounters.com/apple-touch-icon.png?v=1">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.overwatchcounters.com/favicon-32x32.png?v=1">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.overwatchcounters.com/favicon-16x16.png?v=1">
-    <link rel="shortcut icon" href="https://cdn.overwatchcounters.com/favicon.ico?v=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="<?=cdn_if_cdn();?>/apple-touch-icon.png?v=1">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?=cdn_if_cdn();?>/favicon-32x32.png?v=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?=cdn_if_cdn();?>/favicon-16x16.png?v=1">
+    <link rel="shortcut icon" href="<?=cdn_if_cdn();?>/favicon.ico?v=1">
 
 </head>
-<body data-game-version="<?=( $_COOKIE['active_version'] ?? 2 );?>">
+<body>
 
