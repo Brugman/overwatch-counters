@@ -39,8 +39,6 @@ Tried the hosted version? Don't agree with our counter data? Want to use your ow
 1. Save a copy of [our Google Sheet](https://docs.google.com/spreadsheets/d/1v-zzhduSF6UUw-9SNDhAkL9gC4Mppk2SQ0L0gz0CWS0/edit?usp=sharing) to your own Drive.
 1. `File`, `Publish to the web`, Select only page `1`, `Start publishing`.
 1. Change the `Web page` select to `CSV`, copy the URL to your config.
-1. `File`, `Publish to the web`, Select only page `2`, `Start publishing`.
-1. Change the `Web page` select to `CSV`, copy the URL to your config.
 1. Visit the (sub)domain.
 
 ## Contributing
