@@ -1,7 +1,6 @@
 # Overwatch Counters
 
-> Some enemy hero giving you trouble? Grab your favorite counter!\
-> Overwatch Counters is available online at [overwatchcounters.com](https://overwatchcounters.com/).
+> Some enemy hero giving you trouble? Grab your favorite counter!
 
 ![demo](/demo.gif)
 
@@ -23,8 +22,6 @@
 
 
 ## Use your own counter data
-
-Tried the hosted version? Don't agree with our counter data? Want to use your own? Let's do it.
 
 ### Installation
 
